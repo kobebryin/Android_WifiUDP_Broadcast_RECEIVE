@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     public static Handler exHandler;
     TextView tv;
     private ChatServer chatserver;
+    String msgString = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +39,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
-                String msgString = (String)msg.obj;
+                msgString += msg.obj + "\n";
                 Log.d("Handler","Now in Handler");
-                tv.setText(null);
-                tv.setText(msgString+"\n"+tv.getText().toString());
+                tv.setText(msgString);
             }
         };
     }
